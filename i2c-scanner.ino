@@ -1,9 +1,12 @@
-// i2c-scanner
-//
-// This sketch tests the standard 7-bit addresses
-// from 0 to 127. Devices with higher bit address
-// might not be seen properly.
-
+/*
+ * i2c-scanner
+ * This sketch tests the standard 7-bit addresses
+ * rom 0 to 127. Devices with higher bit address
+ * might not be seen properly.
+ * Wiring:
+ * SCL - A5
+ * SDA - A4
+ */
 #include <Wire.h>
 
 void setup()
