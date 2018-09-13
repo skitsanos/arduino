@@ -3,7 +3,8 @@ Code examples to test sensors used in various projects
 
 **ESP8266/NodeMCU with AMS CCS811 and Bosch BME-280 sensors**
 
-[iaq-ESP12CCS811BME280.ino](https://github.com/skitsanos/arduino/blob/master/iaq-ESP12CCS811BME280.ino)
+- [iaq-ESP12CCS811BME280.ino](https://github.com/skitsanos/arduino/blob/master/iaq-ESP12CCS811BME280.ino)
+- [iaq-ESP12CCS811BME280httpd.ino](https://github.com/skitsanos/arduino/blob/master/iaq-ESP12CCS811BME280httpd.ino)
 
 
 ### References
