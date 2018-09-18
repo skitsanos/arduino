@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="10">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LoggerDaisy iAQ Monitor</title>
+
+    <link href="styles.css" rel="stylesheet"/>
+
+    <style>
+        #chart {
+            max-width: 650px;
+            margin: 35px auto;
+        }
+
+        .apexcharts-legend text {
+            font-weight: 900;
+        }
+    </style>
+</head>
+
+<body>
+<div id="chart">
+</div>
+
+
+<script src="apexcharts.min.js"></script>
+<script src="sensors-data.js"></script>
+
+<script>
+    let limits = {
+        eco2: {min: 400, max: 8192},
+        tvoc: {min: 0, max: 1187},
+        temperature: {min: -40, max: 85},
+        humidity: {min: 0, max: 100},
+
+        getPercent: function (metric, value) {
+
+            console.log((value - metric.min) / (metric.max - metric.min) * 100);
+            return (value - metric.min) / (metric.max - metric.min) * 100;
+        }
+    };
+    let data = sensorsData;
+
+    //Apex.colors = ['#00E396', '#FEB019', '#FF4560', '#008FFB'];
+
+    let options = {
+        chart: {
+            height: 380,
+            width: 400,
+            type: 'radialBar'
+        },
+
+        colors: ['#00E396', '#FEB019', '#FF4560', '#008FFB'],
+
+        stroke: {
+            dashArray: 0
+        },
+
+        plotOptions: {
+            radialBar: {
+                offsetY: -30,
+                startAngle: 0,
+                endAngle: 270,
+                hollow: {
+                    margin: 0,
+                    size: '30%',
+                    background: '#fff',
+                    image: undefined,
+                    imageOffsetX: 0,
+                    imageOffsetY: 0,
+                    position: 'front'
+                },
+
+                dataLabels: {
+                    name: {
+                        show: false,
+
+                    },
+                    value: {
+                        show: false,
+                    }
+                }
+            }
+        },
+
+        series: [limits.getPercent(limits.eco2, data[0]), limits.getPercent(limits.tvoc, data[1]), limits.getPercent(limits.temperature, data[2]), limits.getPercent(limits.humidity, data[3])],
+        labels: ['eCO2', 'TVOC', 'Temperature', 'Humidity'],
+        legend: {
+            show: true,
+            floating: true,
+            fontSize: '16px',
+            position: 'left',
+            verticalAlign: 'top',
+            textAnchor: 'end',
+            labels: {
+                useSeriesColors: false,
+            },
+            markers: {
+                size: 0
+            },
+            formatter: function (seriesName, opts) {
+                return seriesName + ":  " + data[opts.seriesIndex];
+            },
+            itemMargin: {
+                vertical: 8,
+            },
+            containerMargin: {
+                left: 180,
+                top: 8
+            }
+        }
+    };
+
+    let chart = new ApexCharts(
+        document.querySelector("#chart"),
+        options
+    );
+
+    console.log(chart.fill);
+
+    chart.render();
+</script>
+</body>
+</html>
