@@ -1,6 +1,9 @@
 # Arduino code bits
 Code examples to test sensors used in various projects
 
+### Embedded web server with SPIFFS support
+- [webserver.ino](https://github.com/skitsanos/arduino/blob/master/webserver/webserver.ino)
+
 ### ESP8266/NodeMCU with AMS CCS811 and Bosch BME-280 sensors
 
 - [iaq-ESP12CCS811BME280.ino](https://github.com/skitsanos/arduino/blob/master/iaq-ESP12CCS811BME280.ino) - collects data from CCS811 and BME-280 sensors and sends them over via HTTP GET request
