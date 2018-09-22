@@ -20,9 +20,9 @@ void setup()
     Serial.begin(115200);
     Serial.println();
 
-    WiFi.mode(WIFI_AP);
+    WiFi.mode(WIFI_AP_STA);
     Serial.println(WiFi.softAPmacAddress());
-    WiFi.disconnect();
+    //WiFi.disconnect();
 
     if (esp_now_init() == ESP_OK)
     {
