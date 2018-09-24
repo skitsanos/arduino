@@ -3,8 +3,8 @@ Code examples to test sensors used in various projects i run on ESP8266 and ESP3
 
 ### Drivers
 
-- [SiliconLabs CP210x] (https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers) - Wemos Lolin boards usually have CP210x.
-- [WCH CH341SER_MAC] (http://www.wch.cn/download/CH341SER_MAC_ZIP.html) - official drivers for OSX, v 1.4
+- [SiliconLabs CP210x](https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers) - Wemos Lolin boards usually have CP210x.
+- [WCH CH341SER_MAC](http://www.wch.cn/download/CH341SER_MAC_ZIP.html) - official drivers for OSX, v 1.4
 - [WCH CH340](https://github.com/MPParsley/ch340g-ch34g-ch34x-mac-os-x-driver) - thirdparty drivers for OSX, v.1.3
 
 ### Embedded web server with SPIFFS support
