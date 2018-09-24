@@ -12,8 +12,8 @@ Code examples to test sensors used in various projects i run on ESP8266 and ESP3
 
 ### ESP8266/NodeMCU with AMS CCS811 and Bosch BME-280 sensors
 
-- [iaq-ESP12CCS811BME280.ino](https://github.com/skitsanos/arduino/blob/master/iaq-ESP12CCS811BME280.ino) - collects data from CCS811 and BME-280 sensors and sends them over via HTTP GET request
-- [iaq-ESP12CCS811BME280httpd.ino](https://github.com/skitsanos/arduino/blob/master/iaq-ESP12CCS811BME280httpd.ino) - same as above, with addition of dual-mode WIFI and HTTP server.
+- [iaq-ESP12CCS811BME280.ino](https://github.com/skitsanos/arduino/blob/master/iaq-ESP12CCS811BME280/iaq-ESP12CCS811BME280.ino) - collects data from CCS811 and BME-280 sensors and sends them over via HTTP GET request
+- [iaq-ESP12CCS811BME280httpd.ino](https://github.com/skitsanos/arduino/blob/master/iaq-ESP12CCS811BME280httpd/iaq-ESP12CCS811BME280httpd.ino) - same as above, with addition of dual-mode WIFI and HTTP server.
 
 **Notes**
 - The equivalent CO2 (eCO2) output range for CCS811 is from 400ppm to 8192ppm. Values outside this range are clipped.
