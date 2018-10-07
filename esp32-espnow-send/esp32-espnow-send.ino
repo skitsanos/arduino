@@ -20,15 +20,29 @@ struct __attribute__((packed)) ESPNOW_DATA
     uint8_t msg;
 } espnow_data;
 
+String mac2String(char *addr)
+{
+    static char str[18];
+
+    if (addr == NULL) return "";
+
+    snprintf(str, sizeof(str), "%02x:%02x:%02x:%02x:%02x:%02x", addr[0], addr[1], addr[2], addr[3], addr[4], addr[5]);
+
+    return str;
+}
+
 void setup()
 {
     Serial.begin(115200);
     Serial.println();
 
+    Serial.println("LoggerDaisy Node.Transmitter");
+
     WiFi.mode(WIFI_STA);
     Serial.println(WiFi.softAPmacAddress());
 
     WiFi.disconnect();
+
     if (esp_now_init() == ESP_OK)
     {
         Serial.println("ESP NOW INIT!");
@@ -37,13 +51,14 @@ void setup()
         Serial.println("ESP NOW INIT FAILED....");
     }
 
-    memcpy(&slave.peer_addr, &remoteMac, 6);
+    memcpy( &slave.peer_addr, &remoteMac, 6 );
     slave.channel = WIFI_CHANNEL;
     slave.encrypt = 0;
 
     if (esp_now_add_peer(peer) == ESP_OK)
     {
         Serial.println("Added Peer!");
+        Serial.println(mac2String((char *) remoteMac));
     }
 
     esp_now_register_send_cb(OnDataSent);
@@ -67,11 +82,11 @@ void loop()
     {
         Serial.printf("\r\nDID NOT SEND....");
     }
-    delay(250);
+    delay(2000);
 }
 
 void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status)
 {
     Serial.print("\r\nLast Packet Send Status:\t");
-    Serial.print(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
+    Serial.print(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success, " : "Delivery Fail");
 }
