@@ -9,7 +9,7 @@
 
 
 
-```
+```c++
 #define I2C_SDA 5
 #define I2C_SCL 4
 
